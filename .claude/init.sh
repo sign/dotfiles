@@ -13,8 +13,8 @@ else
 fi
 
 # Basic plugins
-echo "/plugin install code-review"
-echo "/plugin install commit-commands"
-echo "/plugin install security-guidance"
+echo "/plugin install code-review" | claude -p
+echo "/plugin install commit-commands" | claude -p
+echo "/plugin install security-guidance" | claude -p
 
 

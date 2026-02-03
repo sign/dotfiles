@@ -1,8 +1,68 @@
 {
-  "model": "opus",
-  "enabledPlugins": {
-    "code-review@claude-plugins-official": true,
-    "security-guidance@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true
-  }
+	"model": "opus",
+	"permissions": {
+		"defaultMode": "acceptEdits",
+		"allow": [
+			"Bash(docker:*)"
+		]
+	},
+	"hooks": {
+		"Stop": [
+			{
+				"hooks": [
+					{
+						"type": "command",
+						"command": "afplay /System/Library/Sounds/Glass.aiff"
+					}
+				]
+			}
+		],
+		"PermissionRequest": [
+			{
+				"hooks": [
+					{
+						"type": "command",
+						"command": "afplay /System/Library/Sounds/Funk.aiff"
+					}
+				]
+			}
+		]
+	},
+	"sandbox": {
+		"enabled": false,
+		"autoAllowBashIfSandboxed": true,
+		"network": {
+			"allowUnixSockets": [
+				"/var/run/docker.sock"
+			],
+			"allowLocalBinding": true
+		},
+		"autoAllow": true,
+		"fs": {
+			"write": {
+				"allow": [
+					"."
+				]
+			},
+			"read": {
+				"allow": [
+					"/"
+				],
+				"deny": [
+					"/dev/**",
+					"/proc/**",
+					"/sys/**",
+					"~/.ssh/**",
+					"~/.config/**",
+					"**/.env"
+				]
+			}
+		}
+	},
+	"promptSuggestionEnabled": false,
+	"statusLine": {
+		"type": "command",
+		"command": "bunx -y ccstatusline@latest",
+		"padding": 0
+	}
 }
