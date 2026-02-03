@@ -118,6 +118,7 @@ brew install --cask lm-studio
 
 ### Productivity / Communication
 
+brew install --cask google-chrome
 brew install --cask notion
 brew install --cask loom
 brew install --cask slack

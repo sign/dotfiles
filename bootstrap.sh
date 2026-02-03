@@ -32,7 +32,6 @@ function doIt() {
 	rsync --exclude ".git/" \
 		--exclude ".idea" \
 		--exclude ".DS_Store" \
-		--exclude ".macos" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
