@@ -51,6 +51,13 @@ unset doIt;
 
 ./brew.sh
 
+# Ensure brew-installed tools are available in this session
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 # GitHub CLI auth
 if ! gh auth status &> /dev/null; then
     echo "GitHub CLI not authenticated. Running gh auth login..."
@@ -82,4 +89,7 @@ if command -v op &> /dev/null; then
     fi
 fi
 
-echo "Setup complete!";
+echo ""
+echo "Setup complete!"
+echo ""
+echo "NOTE: Open a new terminal for all PATH changes to take effect."
