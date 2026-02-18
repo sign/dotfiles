@@ -113,6 +113,8 @@ brew install --cask miniconda
 brew install --cask orbstack
 # Claude Code CLI
 brew install --cask claude-code
+# Claude Desktop app (Cowork)
+brew install --cask claude
 # Local LLM playground
 brew install --cask lm-studio
 
