@@ -1,48 +1,25 @@
 ---
-globs: ["**/*.py", "**/*.md"]
 alwaysApply: true
-description: Performance Benchmarking Policy
+description: Benchmark policy — hypothesis-driven performance optimization
 ---
 
 ## Benchmark Policy
 
-When asked to **benchmark** something (a function, module, pipeline, etc.), follow a simple, end-to-end improvement loop.
+When asked to benchmark, follow a scientific optimization loop.
 
-### Core Loop
-1. **Correctness first**
-   - Run the existing tests.
-   - Do not optimize failing or broken code.
+### The Loop
 
-2. **Establish a baseline**
-   - Write and run a benchmark that represents real usage.
-   - Record baseline performance.
-
-3. **Profile and reason**
-   - Identify where time or resources are actually spent.
-   - Form a concrete hypothesis for improvement.
-
-4. **Improve**
-   - Implement focused changes.
-   - Keep behavior identical unless explicitly agreed otherwise.
-   - Keep code clean and readable.
-
-5. **Re-benchmark**
-   - Run the same benchmark again.
-   - Verify that performance improved beyond noise.
-
-6. **Validate**
-   - Ensure tests still pass.
-   - Run `ruff check .` and `pytest` before finishing.
-
-7. **Document**
-   - Write a short Markdown report describing:
-     - What was benchmarked
-     - What was changed
-     - What improved (or didn’t), with numbers
+1. **Verify correctness.** Run existing tests. Never optimize broken code.
+2. **Establish baseline.** Write a benchmark representing real usage. Record numbers.
+3. **Hypothesize.** Identify where time/resources are spent. Form a concrete prediction: "Changing X should improve Y because Z."
+4. **Change one thing.** Implement a focused change. Keep behavior identical.
+5. **Re-measure.** Run the same benchmark. Did it improve beyond noise?
+6. **Keep or revert.** Improvement confirmed → keep. No improvement → revert and explain why.
+7. **Validate.** Tests still pass. `ruff check .` and `pytest` clean.
+8. **Report.** Short summary: what was benchmarked, what changed, what improved (with numbers).
 
 ### Principles
-- Measure before optimizing.
-- Prefer small, reversible diffs.
+- Measure before optimizing. Always.
+- One variable at a time. Otherwise you can’t attribute the result.
 - Never sacrifice correctness for speed.
-- Optimize for clarity as well as performance.
-- If performance doesn’t improve, revert and explain why.
+- If performance doesn’t improve, the honest answer is to revert — not to keep the change "just in case."

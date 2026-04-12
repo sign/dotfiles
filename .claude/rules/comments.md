@@ -1,18 +1,19 @@
 ---
-globs: ["*.ts", "*.tsx", "*.js", "*.jsx", "*.py", "*.html", "*.go", "*css", "*.scss""]
 alwaysApply: true
-description: Comment policy
+description: Comment policy — prefer self-documenting code
 ---
 
 ## Comment Policy
 
-### Unacceptable Comments
-- Comments that repeat what code does
-- Commented-out code (delete it)
-- Obvious comments ("increment counter")
-- Comments instead of good naming
+Comments explain *why*, never *what*. If code needs a comment to explain what it does, refactor the code instead.
 
-### Principle
-Code should be self-documenting. If you need a comment to explain WHAT the code does, consider refactoring to make it clearer.
+### Delete on Sight
+- Comments that restate the code
+- Commented-out code
+- Obvious observations ("increment counter", "return result")
 
-You should not remove any unrelated comments in existing code. Only add comments when modifying code or adding new code.
+### Leave Alone
+- Existing comments in code you're not modifying
+
+### The Only Good Comment
+Explains *why* a non-obvious decision was made — a constraint, a workaround reason, a "this looks wrong but is intentional because..."
