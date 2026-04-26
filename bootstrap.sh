@@ -89,6 +89,9 @@ if command -v op &> /dev/null; then
     fi
 fi
 
+sudo mole optimize
+sudo mole clean
+
 echo ""
 echo "Setup complete!"
 echo ""

@@ -98,6 +98,11 @@ brew install bun
 # Pulumi IaC
 brew install pulumi
 
+### System maintenance
+
+# Deep clean and optimize macOS
+brew install mole
+
 ### Frequently used casks
 
 # 1Password CLI (secure secrets access)
