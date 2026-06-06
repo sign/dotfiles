@@ -28,6 +28,19 @@ if [[ -f "$HOME/.zshrc" ]]; then
     fi
 fi
 
+# Source spark tmux utilities from .zshrc
+if [[ -f "$HOME/.zshrc" ]] && ! grep -q 'source ~/spark.sh' "$HOME/.zshrc"; then
+    echo 'source ~/spark.sh' >> "$HOME/.zshrc"
+fi
+
+# tmux: pane sync toggle (prefix+S) and sync status indicator
+touch "$HOME/.tmux.conf"
+grep -qxF 'bind-key S setw synchronize-panes' "$HOME/.tmux.conf" || \
+  echo 'bind-key S setw synchronize-panes' >> "$HOME/.tmux.conf"
+grep -qxF "set -g status-right 'sync:#{?pane_synchronized,on,off} | %H:%M'" "$HOME/.tmux.conf" || \
+  echo "set -g status-right 'sync:#{?pane_synchronized,on,off} | %H:%M'" >> "$HOME/.tmux.conf"
+tmux source-file "$HOME/.tmux.conf" 2>/dev/null || true
+
 function doIt() {
 	rsync --exclude ".git/" \
 		--exclude ".idea" \
