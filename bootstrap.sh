@@ -33,8 +33,10 @@ if [[ -f "$HOME/.zshrc" ]] && ! grep -q 'source ~/spark.sh' "$HOME/.zshrc"; then
     echo 'source ~/spark.sh' >> "$HOME/.zshrc"
 fi
 
-# tmux: pane sync toggle (prefix+S) and sync status indicator
+# tmux: mouse support, pane sync toggle (prefix+S) and sync status indicator
 touch "$HOME/.tmux.conf"
+grep -qxF 'set -g mouse on' "$HOME/.tmux.conf" || \
+  echo 'set -g mouse on' >> "$HOME/.tmux.conf"
 grep -qxF 'bind-key S setw synchronize-panes' "$HOME/.tmux.conf" || \
   echo 'bind-key S setw synchronize-panes' >> "$HOME/.tmux.conf"
 grep -qxF "set -g status-right 'sync:#{?pane_synchronized,on,off} | %H:%M'" "$HOME/.tmux.conf" || \

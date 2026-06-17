@@ -22,4 +22,5 @@ All else being equal, simpler is better. Apply this trade-off calculus:
 - **Re-plan on failure**: If execution goes sideways, stop and re-plan immediately. Don't keep pushing a broken approach.
 - **Plan non-trivial work**: Enter plan mode for tasks with 3+ steps or architectural decisions. Skip for simple changes.
 - **Subagents for focus**: Offload research and parallel work to subagents. One focused task per subagent. Keep the main context clean.
-- **Learn from corrections**: After any correction, capture the pattern in `tasks/lessons.md` — what happened, why, and what rule prevents it next time.
+- **Skills first**: Before doing specialized work by hand, check whether an installed skill covers it and use it.
+- **Learn from corrections**: After any correction, save the pattern to persistent memory — what happened, why, and what rule prevents it next time.

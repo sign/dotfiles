@@ -45,10 +45,10 @@ _spark_open_grid() {
 spark() {
   local session="${1:-spark}"
   _spark_open_grid "$session" \
-    spark1 \
-    spark2 \
-    spark3 \
-    spark4
+    spark-1 \
+    spark-2 \
+    spark-3 \
+    spark-4
 }
 
 spark-admin() {
