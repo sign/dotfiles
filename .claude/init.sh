@@ -17,6 +17,7 @@ fi
 # Marketplaces: refresh catalogs (true auto-update is UI-only:
 # /plugin -> Marketplaces -> Enable auto-update)
 claude plugin marketplace add talknagish/rylo-skills 2>/dev/null || true
+claude plugin marketplace add DietrichGebert/ponytail 2>/dev/null || true
 claude plugin marketplace update
 
 # Basic plugins: install if missing. Only user-scope plugins are managed here;
@@ -31,7 +32,8 @@ existing=$(installed_plugins)
 for plugin in \
   brand-skills@rylo-skills mobile-skills@rylo-skills finance-skills@rylo-skills \
   regulatory-skills@rylo-skills data-skills@rylo-skills workflow-skills@rylo-skills \
-  research-skills@rylo-skills marketing-skills@rylo-skills; do
+  research-skills@rylo-skills marketing-skills@rylo-skills \
+  ponytail@ponytail; do
   if ! grep -q "^${plugin%%@*}@" <<< "$existing"; then
     claude plugin install "$plugin"
   fi
