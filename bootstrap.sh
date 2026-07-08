@@ -80,6 +80,16 @@ if ! gh auth status &> /dev/null; then
 fi
 gh auth setup-git
 
+# Ensure global git identity is configured
+if ! git config --global user.name &> /dev/null; then
+    read "GIT_NAME?Git user.name is not set. Enter your name: "
+    git config --global user.name "$GIT_NAME"
+fi
+if ! git config --global user.email &> /dev/null; then
+    read "GIT_EMAIL?Git user.email is not set. Enter your email: "
+    git config --global user.email "$GIT_EMAIL"
+fi
+
 # Google Cloud SDK setup
 if command -v gcloud &> /dev/null; then
     if ! gcloud auth list --filter=status:ACTIVE --format="value(account)" 2>/dev/null | grep -q .; then
@@ -87,6 +97,7 @@ if command -v gcloud &> /dev/null; then
         gcloud init
         gcloud auth login
     fi
+    yes | gcloud components update
 fi
 
 # 1Password CLI check
@@ -103,6 +114,8 @@ if command -v op &> /dev/null; then
         echo ""
     fi
 fi
+
+./.claude/init.sh
 
 sudo mole optimize
 sudo mole clean
