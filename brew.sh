@@ -27,13 +27,16 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
+# Upgrade any already-installed casks.
+brew upgrade --cask
+
 # Save Homebrew’s installed location.
 BREW_PREFIX=$(brew --prefix)
 
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+# Install GNU `sed` (available as `gsed`, or via gnubin on PATH).
+brew install gnu-sed
 # Directory tree visualization
 brew install tree
 # Terminal multiplexer
@@ -93,7 +96,13 @@ brew install node
 brew install nvm
 # pnpm package manager
 brew install pnpm
-# Bun runtime
+# Bun runtime (remove old tap version; it conflicts with homebrew/core bun)
+if brew list oven-sh/bun/bun &> /dev/null; then
+    brew uninstall oven-sh/bun/bun
+fi
+if brew tap | grep -q '^oven-sh/bun$'; then
+    brew untap oven-sh/bun
+fi
 brew install bun
 # Pulumi IaC
 brew install pulumi
@@ -127,7 +136,6 @@ brew install --cask lm-studio
 
 brew install --cask google-chrome
 brew install --cask notion
-brew install --cask loom
 brew install --cask slack
 brew install --cask zoom
 
