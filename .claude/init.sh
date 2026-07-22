@@ -18,6 +18,7 @@ fi
 # /plugin -> Marketplaces -> Enable auto-update)
 claude plugin marketplace add talknagish/rylo-skills 2>/dev/null || true
 claude plugin marketplace add DietrichGebert/ponytail 2>/dev/null || true
+claude plugin marketplace add ayghri/i-have-adhd 2>/dev/null || true
 claude plugin marketplace update
 
 # Basic plugins: install if missing. Only user-scope plugins are managed here;
@@ -33,10 +34,13 @@ for plugin in \
   brand-skills@rylo-skills mobile-skills@rylo-skills finance-skills@rylo-skills \
   regulatory-skills@rylo-skills data-skills@rylo-skills workflow-skills@rylo-skills \
   research-skills@rylo-skills marketing-skills@rylo-skills \
-  ponytail@ponytail; do
+  ponytail@ponytail i-have-adhd@i-have-adhd; do
   if ! grep -q "^${plugin%%@*}@" <<< "$existing"; then
     claude plugin install "$plugin"
   fi
+  # install does not enable; enable at user scope. run from $HOME: inside a
+  # project dir the CLI resolves scope to the project and rejects --scope user.
+  (cd "$HOME" && claude plugin enable "$plugin" --scope user) 2>/dev/null || true
 done
 
 # Update all installed plugins (takes effect after Claude Code restart)

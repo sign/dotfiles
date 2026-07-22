@@ -1,6 +1,6 @@
 {
-	"model": "opus",
-	"effortLevel": "max",
+	"model": "fable",
+	"effortLevel": "high",
 	"permissions": {
 		"defaultMode": "acceptEdits",
 		"allow": [
@@ -13,7 +13,7 @@
 				"hooks": [
 					{
 						"type": "command",
-						"command": "afplay /System/Library/Sounds/Glass.aiff"
+						"command": "command -v afplay >/dev/null && afplay /System/Library/Sounds/Glass.aiff"
 					}
 				]
 			}
@@ -23,42 +23,34 @@
 				"hooks": [
 					{
 						"type": "command",
-						"command": "afplay /System/Library/Sounds/Funk.aiff"
+						"command": "command -v afplay >/dev/null && afplay /System/Library/Sounds/Funk.aiff"
+					}
+				]
+			}
+		],
+		"Notification": [
+			{
+				"matcher": "idle_prompt|agent_needs_input",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "command -v afplay >/dev/null && afplay /System/Library/Sounds/Ping.aiff"
 					}
 				]
 			}
 		]
 	},
-	"sandbox": {
-		"enabled": false,
-		"autoAllowBashIfSandboxed": true,
-		"network": {
-			"allowUnixSockets": [
-				"/var/run/docker.sock"
-			],
-			"allowLocalBinding": true
-		},
-		"autoAllow": true,
-		"fs": {
-			"write": {
-				"allow": [
-					"."
-				]
-			},
-			"read": {
-				"allow": [
-					"/"
-				],
-				"deny": [
-					"/dev/**",
-					"/proc/**",
-					"/sys/**",
-					"~/.ssh/**",
-					"~/.config/**",
-					"**/.env"
-				]
-			}
-		}
+	"enabledPlugins": {
+		"ponytail@ponytail": true,
+		"i-have-adhd@i-have-adhd": true,
+		"brand-skills@rylo-skills": true,
+		"mobile-skills@rylo-skills": true,
+		"finance-skills@rylo-skills": true,
+		"regulatory-skills@rylo-skills": true,
+		"data-skills@rylo-skills": true,
+		"workflow-skills@rylo-skills": true,
+		"research-skills@rylo-skills": true,
+		"marketing-skills@rylo-skills": true
 	},
 	"promptSuggestionEnabled": false,
 	"statusLine": {
