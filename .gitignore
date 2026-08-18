@@ -1,6 +1,9 @@
 # InteliJ IDEA project files
 .idea/
 
+# Local secrets
+.env
+
 # Compiled Python files
 *.pyc
 

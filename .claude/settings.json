@@ -2,7 +2,7 @@
 	"model": "fable",
 	"effortLevel": "high",
 	"permissions": {
-		"defaultMode": "acceptEdits",
+		"defaultMode": "auto",
 		"allow": [
 			"Bash(docker:*)"
 		]
@@ -52,7 +52,28 @@
 		"research-skills@rylo-skills": true,
 		"marketing-skills@rylo-skills": true
 	},
+	"extraKnownMarketplaces": {
+		"rylo-skills": {
+			"source": {
+				"source": "github",
+				"repo": "talknagish/rylo-skills"
+			}
+		},
+		"ponytail": {
+			"source": {
+				"source": "github",
+				"repo": "DietrichGebert/ponytail"
+			}
+		},
+		"i-have-adhd": {
+			"source": {
+				"source": "github",
+				"repo": "ayghri/i-have-adhd"
+			}
+		}
+	},
 	"promptSuggestionEnabled": false,
+	"skipDangerousModePermissionPrompt": true,
 	"statusLine": {
 		"type": "command",
 		"command": "bunx -y ccstatusline@latest",
