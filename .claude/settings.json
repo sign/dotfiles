@@ -1,6 +1,11 @@
 {
 	"model": "fable",
 	"effortLevel": "high",
+	"remoteControlAtStartup": true,
+	"attribution": {
+		"sessionUrl": false
+	},
+	"outputStyle": "Concise",
 	"permissions": {
 		"defaultMode": "auto",
 		"allow": [
