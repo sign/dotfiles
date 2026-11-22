@@ -101,6 +101,9 @@ if command -v gcloud &> /dev/null; then
     yes | gcloud components update
 fi
 
+# After git and gcloud setup: it finds the @rylo.com account from them
+./finicky.sh
+
 # 1Password CLI check
 if command -v op &> /dev/null; then
     if ! op account list &> /dev/null; then

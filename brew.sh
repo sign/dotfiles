@@ -135,6 +135,8 @@ brew install --cask lm-studio
 ### Productivity / Communication
 
 brew install --cask google-chrome
+# Routes links to the right Chrome profile (configured by finicky.sh)
+brew install --cask finicky
 brew install --cask notion
 brew install --cask slack
 brew install --cask zoom
