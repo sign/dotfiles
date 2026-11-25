@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# Open *.rylo.cc links in the Chrome profile signed in to your @rylo.com account.
+# Open work links (*.rylo.cc, *.ryloom.com, the company GitHub org) in the Chrome profile signed in to your @rylo.com account.
 #
 # Finicky's own `profile` option needs to read Chrome's "Local State" file, which
 # device management blocks on Rylo Macs (it then silently opens the wrong profile).
-# So Finicky hands rylo.cc links to a tiny wrapper app that lets Chrome pick the
+# So Finicky hands those links to a tiny wrapper app that lets Chrome pick the
 # profile itself via --profile-email.
 #
 # Usage: ./finicky.sh [you@rylo.com]
@@ -39,14 +39,17 @@ export default {
   defaultBrowser: "Google Chrome",
   handlers: [
     {
-      match: /^https?:\/\/([^\/]+\.)?rylo\.cc([\/:?#]|$)/,
+      match: [
+        /^https?:\/\/([^\/]+\.)?(rylo\.cc|ryloom\.com)([\/:?#]|$)/,
+        /^https?:\/\/github\.com\/talknagish([\/?#]|$)/i,
+      ],
       browser: { name: $(jq -n --arg app "$APP" '$app'), appType: "path" },
     },
   ],
 };
 EOF
 
-echo "Wrote $CONFIG (rylo.cc links open in the Chrome profile of $EMAIL)."
+echo "Wrote $CONFIG (work links open in the Chrome profile of $EMAIL)."
 
 if [[ -z "${FINICKY_CONFIG:-}" ]]; then
     # Finicky does not reliably notice the rewritten config while running.
